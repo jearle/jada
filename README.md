@@ -154,19 +154,19 @@ console.log(datastore.get('my-key')); // outputs 'Hello, World!'
 ### Datastore Instance
 - - -
 
-#### get()
+#### get(key)
 
 description
 
 __Usage__
 
-#### set()
+#### set(*key*, *value*)
 
 description
 
 __Usage__
 
-#### remove()
+#### remove(*key*)
 
 description
 
