@@ -186,33 +186,85 @@ console.log(val); // outputs { name: 'Jesse' }
 
 #### remove(*key*)
 
-description
+Removes both the key and value from the datastore.
 
 __Usage__
+
+```js
+var datastore = Jada.create({ name: 'Jesse' });
+
+console.log(datastore.get('name')); // outputs 'Jesse'
+
+datastore.remove('name');
+
+console.log(datastore.get('name')); // outputs undefined
+```
 
 #### dump()
 
-description
+Dumps the entire contents of the data store as a javascript object.
 
 __Usage__
+
+```js
+var datastore = Jada.create({ name: 'Jesse' });
+
+console.log(datastore.dump()); // outputs { name: 'Jesse' }
+```
 
 #### keys()
 
-description
+Returns an array of all the keys within the datastore.
 
 __Usage__
+
+```js
+var datastore = Jada.create({ name: 'Jesse', height: '4 foot nothin' });
+
+console.log(datastore.keys()); // outputs [ 'name', 'height' ]
+```
 
 #### clear()
 
-description
+Clears all the data out of the datastore.
 
 __Usage__
+
+```js
+var datastore = Jada.create({ name: 'Jesse' });
+
+console.log(datastore.dump()); // outputs { name: 'Jesse' }
+
+datastore.clear();
+
+console.log(datastore.dump()); // outputs {}
+```
 
 #### before(*[key]*, *callback*)
 
-description
+The before listener fires for the value specified by the key is fired.  The key is optional, if only a callback is provided, then the callback will fire for all keys set.
 
 __Usage__
+
+```js
+var datastore = Jada.create({ name: 'Jesse', height: '4 foot nothin' });
+
+// Only fires when 'name' is set.
+datastore.before('name', function (key, oldValue, newValue) {
+  var currentValue = datastore.get(key);
+  console.log(currentValue === oldValue); // outputs true
+});
+
+// Fires before any key is set
+datastore.before(function (key, oldValue, newValue) {
+  console.log(key);
+});
+
+datastore.set('name', 'Fred'); // outputs true
+                               // outputs 'name'
+
+datastore.set('height', '6 foot'); // outputs 'name'
+```
 
 #### after(*[key]*, *callback*)
 
