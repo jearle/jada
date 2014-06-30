@@ -132,6 +132,22 @@ The Jada API consists of a very simple set of verbs for manipulating and listeni
 
 Create is the sole method on the `Jada` object.  It is used to create a datastore instance.
 
+__Usage__
+
+Creating a datastore with no predefined values.
+
+```js
+var datastore = Jada.create();
+```
+
+Creating a datastore with predefined values.
+
+```js
+var datastore = Jada.create({ 'key': 'value'});
+
+console.log(datastore.get('key')); // LOG: *value*
+```
+
 ### get
 
 ### set
