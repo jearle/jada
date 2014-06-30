@@ -4,7 +4,7 @@ Jada is a simple, lightweight library for storing data.  It does not update loca
 
 ## Size
 
-Jada is 2.6kb in size when minified.
+Jada is __2.6kb__ in size when minified.
 
 ## Example
 
