@@ -145,7 +145,7 @@ Creating a datastore with predefined values.
 ```js
 var datastore = Jada.create({ 'my-key': 'Hello, World!'});
 
-console.log(datastore.get('key')); // outputs 'Hello, World!'
+console.log(datastore.get('my-key')); // outputs 'Hello, World!'
 ```
 
 ### get
