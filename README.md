@@ -127,6 +127,7 @@ Goodbye, Bob!
 The Jada API consists of a very simple set of verbs for manipulating and listening to the data within your store.
 
 ### Jada Singleton
+- - -
 
 #### create()
 
@@ -147,6 +148,9 @@ var datastore = Jada.create({ 'my-key': 'Hello, World!'});
 
 console.log(datastore.get('my-key')); // outputs 'Hello, World!'
 ```
+
+### Datastore Instance
+- - -
 
 #### get()
 
