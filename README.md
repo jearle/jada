@@ -242,7 +242,7 @@ console.log(datastore.dump()); // outputs {}
 
 #### before(*[key]*, *callback*)
 
-The before listener fires for the value specified by the key is fired.  The key is optional, if only a callback is provided, then the callback will fire for all keys set.
+The before listener fires before a key is set.  The key is optional, if only a callback is provided, then the callback will fire before all keys are set.
 
 __Usage__
 
@@ -263,11 +263,31 @@ datastore.before(function (key, oldValue, newValue) {
 datastore.set('name', 'Fred'); // outputs true
                                // outputs 'name'
 
-datastore.set('height', '6 foot'); // outputs 'name'
+datastore.set('height', '6 foot'); // outputs 'height'
 ```
 
 #### after(*[key]*, *callback*)
 
-description
+The after listener fires after a key is set.  The key is optional, if only a callback is provided, then the callback will fire after all keys are set.
 
 __Usage__
+
+```js
+var datastore = Jada.create({ name: 'Jesse', height: '4 foot nothin' });
+
+// Only fires after 'name' is set.
+datastore.after('name', function (key, oldValue, newValue) {
+  var currentValue = datastore.get(key);
+  console.log(currentValue === newValue); // outputs true
+});
+
+// Fires after any key is set
+datastore.after(function (key, oldValue, newValue) {
+  console.log(key);
+});
+
+datastore.set('name', 'Fred'); // outputs true
+                               // outputs 'name'
+
+datastore.set('height', '6 foot'); // outputs 'height'
+```
