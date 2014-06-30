@@ -148,18 +148,50 @@ var datastore = Jada.create({ 'my-key': 'Hello, World!'});
 console.log(datastore.get('my-key')); // outputs 'Hello, World!'
 ```
 
-### get
+#### get()
 
-### set
+description
 
-### remove
+__Usage__
 
-### dump
+#### set()
 
-### keys
+description
 
-### clear
+__Usage__
 
-### before
+#### remove()
 
-### after
+description
+
+__Usage__
+
+#### dump()
+
+description
+
+__Usage__
+
+#### keys()
+
+description
+
+__Usage__
+
+#### clear()
+
+description
+
+__Usage__
+
+#### before()
+
+description
+
+__Usage__
+
+#### after()
+
+description
+
+__Usage__
