@@ -121,3 +121,29 @@ Current Value: Goodbye, Bob!
 Hello, World!
 Goodbye, Bob!
 ```
+
+## API
+
+The Jada API consists of a very simple set of verbs for manipulating and listening to the data within your store.
+
+### Jada Singleton
+
+#### create
+
+Create is the sole method on the `Jada` object.  It is used to create a datastore instance.
+
+### get
+
+### set
+
+### remove
+
+### dump
+
+### keys
+
+### clear
+
+### before
+
+### after
