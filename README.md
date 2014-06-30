@@ -156,15 +156,33 @@ console.log(datastore.get('my-key')); // outputs 'Hello, World!'
 
 #### get(*key*)
 
-description
+Get the current value associated with the specified key.
 
 __Usage__
+
+```js
+var datastore = Jada.create({ 'key': [1, 2, 3] });
+
+var val = datastore.get('key');
+
+console.log(val); // outputs [ 1, 2, 3 ]
+```
 
 #### set(*key*, *value*)
 
-description
+Sets a key to the specified value.
 
 __Usage__
+
+```js
+var datastore = Jada.create();
+
+datastore.set('my-key', { name: 'Jesse' });
+
+var val = datastore.get('my-key');
+
+console.log(val); // outputs { name: 'Jesse' }
+```
 
 #### remove(*key*)
 
@@ -190,13 +208,13 @@ description
 
 __Usage__
 
-#### before()
+#### before(*[key]*, *callback*)
 
 description
 
 __Usage__
 
-#### after()
+#### after(*[key]*, *callback*)
 
 description
 
