@@ -128,7 +128,7 @@ The Jada API consists of a very simple set of verbs for manipulating and listeni
 
 ### Jada Singleton
 
-#### create
+#### create()
 
 Create is the sole method on the `Jada` object.  It is used to create a datastore instance.
 
