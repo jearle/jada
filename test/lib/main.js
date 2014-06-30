@@ -1,7 +1,5 @@
 
 var chai = require('chai');
-// var expect = chai.expect;
-// var assert = chai.assert;
 
 chai.should();
 
@@ -13,7 +11,7 @@ describe('lib/main', function () {
   describe('#create', function () {
 
     it('should create an instance of Jada', function () {
-      // main.create().should.be.instanceof(Jada);
+      main.create().should.be.instanceof(Jada);
     });
   
   });

@@ -8,6 +8,7 @@ var constants = require('./lib/constants');
 
 var options = {
   debug: true,
+  standalone: 'Jada',
   transform: [
     'jadeify',
     'stylify'
@@ -15,7 +16,6 @@ var options = {
 };
 
 gulp.task('browserify', function () {
-  console.log('called?');
   return gulp.src(constants.getMain())
 
     .pipe(

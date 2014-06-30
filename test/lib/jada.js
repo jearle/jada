@@ -6,19 +6,36 @@ var Jada = require('lib/jada');
 
 var NotPlainObjectError = require('lib/errors/not-plain-object-error');
 
-function beforeAfterHelper (method) {
+function beforeAfterHelper (method, callback) {
   var count = 0;
   var data = {
     'key': 'val',
     'key2': 'val'
   };
   var jada = new Jada(data);
-  jada[method](function () {
+  jada[method](function (key, oldValue, newValue) {
     count++;
+    callback(jada.get(key), oldValue, newValue);
   });
   jada.set('key', 'newValue');
   jada.set('key2', 'newValue');
   (count).should.equal(2);
+}
+
+function beforeAfterKeyHelper (method, callback) {
+
+  var data = {'key': 'value'};
+  var jada = new Jada(data);
+  var count = 0;
+
+  jada[method]('key', function (key, oldValue, newValue) {
+    var currentValue = jada.get('key');
+    callback(currentValue, oldValue, newValue);
+    count++;
+  });
+  jada.set('key', 'hello');
+  (count).should.equal(1);
+
 }
 
 describe('lib/jada', function () {
@@ -30,15 +47,6 @@ describe('lib/jada', function () {
       var jada = new Jada();
       jada.should.be.instanceof(Jada);
     
-    });
-
-    it('should throw a NotPlainObjectError', function () {
-
-      (function () {
-        var jada;
-        jada = new Jada([1]);
-      }).should.throw(new NotPlainObjectError().message);
-
     });
 
   });
@@ -121,15 +129,33 @@ describe('lib/jada', function () {
   describe('#before', function () {
 
     it('should fire twice when no key is supplied', function () {
-      beforeAfterHelper('before');
+      beforeAfterHelper('before', function (currentValue, oldValue) {
+        currentValue.should.equal(oldValue);
+      }); 
+    });
+
+    it('should fire before key is set', function () {
+      beforeAfterKeyHelper('before', function (currentValue, oldValue) {
+        currentValue.should.equal(oldValue);
+      });
     });
 
   });
 
   describe('#after', function () {
+    
     it('should fire twice when no key is supplied', function () {
-      beforeAfterHelper('after');
+      beforeAfterHelper('after', function (currentValue, oldValue, newValue) {
+        currentValue.should.equal(newValue);
+      });
     });
+
+    it('should fire after key is set', function () {
+      beforeAfterKeyHelper('after', function (currentValue, oldValue, newValue) {
+        currentValue.should.equal(newValue);
+      });
+    });
+
   });
 
 });
