@@ -8,52 +8,32 @@ Jada is a simple, lightweight library for storing data.  It does not update loca
 
 var datastore = Jada.create();
 
-datastore.before(function (key, oldValue, newValue) {
+function listenerFired (label, key, oldValue, newValue) {
   var currentValue = datastore.get(key);
 
-  console.log('Before All');
+  console.log(label);
   console.log('=============')
   console.log('          Key: ' + key);
   console.log('Current Value: ' + currentValue);
   console.log('    Old Value: ' + oldValue);
   console.log('    New Value: ' + newValue);
   console.log('');
+}
+
+datastore.before(function (key, oldValue, newValue) {
+  listenerFired('Before All', key, oldValue, newValue);
 });
 
 datastore.after(function (key, oldValue, newValue) {
-  var currentValue = datastore.get(key);
-
-  console.log('After All');
-  console.log('=============')
-  console.log('          Key: ' + key);
-  console.log('Current Value: ' + currentValue);
-  console.log('    Old Value: ' + oldValue);
-  console.log('    New Value: ' + newValue);
-  console.log('');
+  listenerFired('After All', key, oldValue, newValue);
 });
 
 datastore.before('my-key', function (key, oldValue, newValue) {
-  var currentValue = datastore.get(key);
-
-  console.log('Before my-key');
-  console.log('=============')
-  console.log('          Key: ' + key);
-  console.log('Current Value: ' + currentValue);
-  console.log('    Old Value: ' + oldValue);
-  console.log('    New Value: ' + newValue);
-  console.log('');
+  listenerFired('Before my-key', key, oldValue, newValue);
 });
 
 datastore.after('my-key', function (key, oldValue, newValue) {
-  var currentValue = datastore.get(key);
-
-  console.log('After my-key');
-  console.log('=============')
-  console.log('          Key: ' + key);
-  console.log('Current Value: ' + currentValue);
-  console.log('    Old Value: ' + oldValue);
-  console.log('    New Value: ' + newValue);
-  console.log('');
+  listenerFired('After my-key', key, oldValue, newValue);
 });
 
 datastore.set('my-key', 'Hello, World!');
