@@ -130,7 +130,7 @@ The Jada API consists of a very simple set of verbs for manipulating and listeni
 ### Jada Singleton
 - - -
 
-#### create()
+#### create(*[data]*)
 
 Create is the sole method on the `Jada` object.  It is used to create a datastore instance.
 
@@ -154,7 +154,7 @@ console.log(datastore.get('my-key')); // outputs 'Hello, World!'
 ### Datastore Instance
 - - -
 
-#### get(key)
+#### get(*key*)
 
 description
 
