@@ -5,7 +5,6 @@ Jada is a simple, lightweight library for storing data.  It does not update loca
 ## Example
 
 ```js
-
 var datastore = Jada.create();
 
 function listenerFired (label, key, oldValue, newValue) {
@@ -20,24 +19,53 @@ function listenerFired (label, key, oldValue, newValue) {
   console.log('');
 }
 
+// Fires twice,
+// once before setting 'my-key' and
+// once before setting 'my-other-key'
+// 
+// This callback will fire before any key is set.
 datastore.before(function (key, oldValue, newValue) {
   listenerFired('Before All', key, oldValue, newValue);
 });
 
+// Fires twice,
+// once after setting 'my-key' and
+// once after setting 'my-other-key'
+// 
+// This callback will fire after any key is set.
 datastore.after(function (key, oldValue, newValue) {
   listenerFired('After All', key, oldValue, newValue);
 });
 
+// Fires once,
+// once before setting 'my-key'
+// 
+// This callback will fire once before the specified key is set.
 datastore.before('my-key', function (key, oldValue, newValue) {
   listenerFired('Before my-key', key, oldValue, newValue);
 });
 
+// Fires once,
+// once after setting 'my-key'
+// 
+// This callback will fire once after the specified key is set.
 datastore.after('my-key', function (key, oldValue, newValue) {
   listenerFired('After my-key', key, oldValue, newValue);
 });
 
+// Sets 'my-key' to the value 'Hello, world!'
 datastore.set('my-key', 'Hello, World!');
+
+// Sets 'my-other-key' to the value 'Goodbye, Bob!'
 datastore.set('my-other-key', 'Goodbye, Bob!');
+
+// This will log the value 'Hello, World!'
+// for the key 'my-key'.
+console.log(datastore.get('my-key'));
+
+// This will log the value 'Goodbye, Bob!'
+// for the key 'my-other-key'.
+console.log(datastore.get('my-other-key'));
 
 ```
 
@@ -85,4 +113,7 @@ After All
 Current Value: Goodbye, Bob!
     Old Value: undefined
     New Value: Goodbye, Bob!
+
+Hello, World!
+Goodbye, Bob!
 ```
