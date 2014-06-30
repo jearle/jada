@@ -2,7 +2,9 @@
 
 Jada is a simple, lightweight library for storing data.  It does not update localStorage, nor does it provide hooks for syncing data to a server.  It simply gets and sets data, and provides hooks for listening to when data has been set both before and after.
 
-Jada is 2.6kb in size.
+## Size
+
+Jada is 2.6kb in size when minified.
 
 ## Example
 
