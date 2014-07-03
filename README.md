@@ -2,6 +2,10 @@
 
 Jada is a simple, lightweight library for storing data.  It does not update localStorage, nor does it provide hooks for syncing data to a server.  It simply gets and sets data, and provides hooks for listening to when data has been set both before and after.
 
+## Install
+
+`npm install jada`
+
 ## Size
 
 Jada is __2.6kb__ in size when minified.

@@ -11,6 +11,6 @@ gulp.task('serve', function () {
   var app = express();
   app.use(require('connect-livereload')());
   app.use(express.static(publicPath));
-  app.listen(5001);
+  app.listen(5002);
 
 });
