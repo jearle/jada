@@ -40,6 +40,7 @@
     "gulp-jshint": "^1.6.3",
     "gulp-util": "^2.2.18",
     "jshint-stylish": "^0.2.0",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "gulp-shell": "^0.2.9"
   }
 }
